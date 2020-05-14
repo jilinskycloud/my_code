@@ -35,7 +35,7 @@ int main(){
 	config.c_cflag &= ~(CSIZE | PARENB | CSTOPB);
 	config.c_cflag |= CS8;
 
-	printf("file status = 0x%x\n", fcntl(fd, F_GETFL, 0));
+//	printf("file status = 0x%x\n", fcntl(fd, F_GETFL, 0));
 	//config.c_cc[VMIN] = 0;
 	//config.c_cc[VTIME] = 5;
 	//fcntl(fd,F_SETFL,FNDELAY);		 //CONVERT TO BLOCKING MODE
@@ -55,22 +55,23 @@ int main(){
 			printf("Error from write: %d, %d\n", wlen, errno);
 		}
 		tcdrain(fd);    
-		printf("Data Wrote!!!!\n");
+//		printf("Data Wrote!!!!\n");
 	// Read Function
 //}
-
-	do{	
-		usleep(10000);
+int a = 1;
+//	do{
+//a = 0;	
+	//	usleep(10000);
 		int rdlen = read(fd, buf, sizeof(buf) - 1);
-		if (rdlen > 0) {
+		if (rdlen == 42) {
 			#ifdef DISPLAY_STRING
 				buf[rdlen] = 0;
-				printf("Read %d: \"%s\"\n", rdlen, buf);
+		//		printf("Read %d: \"%s\"\n", rdlen, buf);
 			#else 
 				unsigned char   *p;
-				printf("Read %d:", rdlen);
+		//		printf("Read %d:", rdlen);
 				for (p = buf; rdlen-- > 0; p++)
-				printf(" 0x%x", *p);
+				printf(" %x", *p);
 				printf("\n");
 			#endif
 		} 
@@ -81,7 +82,7 @@ int main(){
 			printf("Timeout from read\n");
 		}   
  */           
-	} while (1);
+//	} while (a == 1);
 //}
 	close(fd);
         return 0;

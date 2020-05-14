@@ -45,7 +45,7 @@ int hex_to_ascii(char c, char d){
 
 
 
-static const char *device = "/dev/spidev0.0";
+static const char *device = "/dev/loraSPI1.0";
 static uint8_t mode;
 static uint8_t bits = 8;
 static uint32_t speed = 500000;
